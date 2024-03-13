@@ -1,48 +1,11 @@
 #!python
 
-import asyncio
-import shazamio
 import time
-from pydub import AudioSegment
 import os
 import requests
 
-
+from pydub import AudioSegment
 from ShazamAPI import Shazam
-
-
-
-
-# async def main():
-#   shazam = shazamio.Shazam()
-#   out = await shazam.recognize_song('main.py')
-#   print(out)
-
-# loop = asyncio.get_event_loop()
-# loop.run_until_complete(main())
-
-# use shazamio to recognize song from file "test song.mp4a"
-async def recognizeSong(songName, duration, segmentNumber):
-  pathToAudioFile = f"./input songs/segments/{songName}"
-
-  shazam = shazamio.Shazam()
-
-  start = time.time()
-  out = await shazam.recognize_song(pathToAudioFile)
-  end = time.time()
-
-  # print("Time taken (seconds): ", end - start)
-  # try:
-  if out and out["track"] and out["track"]["sections"] and out["track"]["sections"][0] and out["track"]["sections"][0]["metadata"]:
-    print(f"{duration}s  part {segmentNumber}: {out['track']['title']}")
-    # print("Title: ", out["track"]["title"])
-    # print("metadata: ", out["track"]["sections"][0]["metadata"])
-    # print(out)
-  else:
-    print(f"{duration}s  part {segmentNumber}: No match found {out}")
-  # except Exception as e:
-  #   print(out)
-  #   raise e
 
 
 def recognizeSongWithShazam(pathToAudioFile):
@@ -51,7 +14,7 @@ def recognizeSongWithShazam(pathToAudioFile):
   shazam = Shazam(mp3_file_content_to_recognize)
   recognize_generator = shazam.recognizeSong()
   m = None
-  # try:
+
   match = next(recognize_generator) # current offset & shazam response to recognize requests
   m = match
   match =  match[1]
@@ -61,9 +24,6 @@ def recognizeSongWithShazam(pathToAudioFile):
     print(f"Shazam: {os.path.basename(pathToAudioFile)}: NO MATCH FOUND    {match}")
     return "no match found"
 
-  # except Exception as e:
-  #   print("error", e)
-  #   print("match", m)
 
 def recognizeSongWithAudD(pathToAudioFile):
   song = open(pathToAudioFile, 'rb').read()
@@ -200,10 +160,10 @@ def recongizeSongFromCompressedAudioFiles(audioFileName):
 
 # COMPRESSED FILES
 # Step 1: Compress the audio file at different bitrates
-compressAudioFile("Bob Marley & The Wailers - Could You Be Loved.mp3")
+# compressAudioFile("Bob Marley & The Wailers - Could You Be Loved.mp3")
 
 # Step 2: Recognize the song from each compressed audio file
-recongizeSongFromCompressedAudioFiles("Bob Marley & The Wailers - Could You Be Loved.mp3")
+# recongizeSongFromCompressedAudioFiles("Bob Marley & The Wailers - Could You Be Loved.mp3")
 
 
 
