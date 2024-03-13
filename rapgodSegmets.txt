@@ -1,0 +1,9 @@
+AudD: 30s.mp3: ['Rap God', 'Rap God', 'Rap God (Matstubs Trap God Remix)', 'Rap God (remix)', 'Rap God', 'Rap God (Matstubs Trap God Remix)']
+AudD: 6.0s_segment_1.mp3: ['Rap God', 'Rap God (Matstubs Trap God Remix)']
+AudD: 6.0s_segment_2.mp3: ['Rap God']
+AudD: 6.0s_segment_3.mp3: ['Rap God']
+AudD: 6.0s_segment_4.mp3: ['Rap God']
+AudD: 6.0s_segment_5.mp3: ['Rap God (remix)', 'Rap God', 'Rap God (Matstubs Trap God Remix)']
+
+AudD: 3.0s_segment_1.mp3: ['Rap God']
+AudD: 3.0s_segment_2.mp3: ['Rap God']
