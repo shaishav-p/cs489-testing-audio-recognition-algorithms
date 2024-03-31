@@ -150,6 +150,41 @@ def recongizeSongFromCompressedAudioFiles(audioFileName):
     else:
       time.sleep(2)
   
+def getFirstAndMiddle3s(audioFileName):
+  songName = audioFileName[:-4]
+  outputFolder = f"./input songs/firstAndMiddle3s/{songName}/"
+  if not os.path.exists(outputFolder):
+    os.makedirs(outputFolder)
+
+  # Load the original MP3 file
+  original_audio = AudioSegment.from_mp3(f"./input songs/{audioFileName}")
+
+  # take the first 3 seconds
+  first3s = original_audio[:3000]  # 3000 milliseconds = 3 seconds
+  first3s.export( f"{outputFolder}/first3s.mp3", format="mp3")
+
+  # Extract the middle 3 seconds
+  middle = len(original_audio) // 2
+  middle3s = original_audio[middle-1500:middle+1500]
+  middle3s.export( f"{outputFolder}/middle3s.mp3", format="mp3")
+
+  # recognizeSongWithAudD(f"{outputFolder}/first3s.mp3")
+  # recognizeSongWithAudD(f"{outputFolder}/middle3s.mp3")
+
+  # recognizeSongWithShazam(f"{outputFolder}/first3s.mp3")
+  # recognizeSongWithShazam(f"{outputFolder}/middle3s.mp3")
+
+
+def recongizeSongFromFirstAndMiddle3s(audioFileName):
+  songName = audioFileName[:-4]
+  pathToAudioFile = f"./input songs/firstAndMiddle3s/{songName}"
+
+  recognizeSongWithAudD(f"{pathToAudioFile}/first3s.mp3")
+  recognizeSongWithAudD(f"{pathToAudioFile}/middle3s.mp3")
+
+  recognizeSongWithShazam(f"{pathToAudioFile}/first3s.mp3")
+  recognizeSongWithShazam(f"{pathToAudioFile}/middle3s.mp3")
+
 
 # SEGMENTS
 # Step 1: Split the audio into segments
@@ -165,7 +200,9 @@ def recongizeSongFromCompressedAudioFiles(audioFileName):
 # Step 2: Recognize the song from each compressed audio file
 # recongizeSongFromCompressedAudioFiles("Bob Marley & The Wailers - Could You Be Loved.mp3")
 
+# FIRST 3s and MID 3s
+# Step 1: Get the first 3s and middle 3s of the audio file
+getFirstAndMiddle3s("Bob Marley & The Wailers - Could You Be Loved.mp3")
 
-
-
-
+# Step 2: Recognize the song from the first 3s and middle 3s
+recongizeSongFromFirstAndMiddle3s("Bob Marley & The Wailers - Could You Be Loved.mp3")
