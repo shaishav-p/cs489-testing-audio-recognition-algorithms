@@ -202,7 +202,7 @@ def recongizeSongFromFirstAndMiddle3s(audioFileName):
 
 # FIRST 3s and MID 3s
 # Step 1: Get the first 3s and middle 3s of the audio file
-getFirstAndMiddle3s("Bob Marley & The Wailers - Could You Be Loved.mp3")
+# getFirstAndMiddle3s("Bob Marley & The Wailers - Could You Be Loved.mp3")
 
 # Step 2: Recognize the song from the first 3s and middle 3s
-recongizeSongFromFirstAndMiddle3s("Bob Marley & The Wailers - Could You Be Loved.mp3")
+# recongizeSongFromFirstAndMiddle3s("Bob Marley & The Wailers - Could You Be Loved.mp3")
