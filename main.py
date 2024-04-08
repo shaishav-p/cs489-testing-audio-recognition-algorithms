@@ -239,32 +239,39 @@ def recognizeSongFromFirstAndMiddle3s(audioFileName):
 
 
 
-# -----------------------------------------------------------------------------------------------
-# Uncomment the function calls to run the different experiments
+#------------------------------------------------------------------------------------
+# Make sure file names correspond with files in /input songs
 # Note: the api_token in the recognizeSongWithAudD function should be updated with a valid token
-# -----------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------
+  
+listOfSongs = ["Bob Marley & The Wailers - Could You Be Loved.mp3",
+        "Eminem - Rap God (Explicit).mp3",
+        "Ed Sheeran - Dive.mp3",
+        "ILLENIUM Excision I Prevail - Feel Something.mp3",
+        "ACDC - Thunderstruck.mp3",
+        "Zach Bryan - I Remember Everything (feat. Kacey Musgraves).mp3",
+        "Miles Davis - All Blues.mp3",
+        "Ludwig Van Beethoven_ Symphony No. 5, Op. 67.mp3"]
+for song in listOfSongs:
+  # SEGMENTS
+  # Step 1: Split the audio into segments
+  # splitAudioIntoSegments(s)
+        
+  # Step 2: Recognize the song from each segment
+  # recongizeSongFromAudioFileSegments(s)
 
-# SEGMENTS
-# Step 1: Split the audio into segments
-# splitAudioIntoSegments("Eminem - Rap God (Explicit).mp3")
-      
-# Step 2: Recognize the song from each segment
-# recognizeSongFromAudioFileSegments("Eminem - Rap God (Explicit).mp3")
+  # COMPRESSED FILES
+  # Step 1: Compress the audio file at different bitrates
+  compressAudioFile(song)
 
-
-
-# COMPRESSED FILES
-# Step 1: Compress the audio file at different bitrates
-# compressAudioFile("Bob Marley & The Wailers - Could You Be Loved.mp3")
-
-# Step 2: Recognize the song from each compressed audio file
-# recognizeSongFromCompressedAudioFiles("Bob Marley & The Wailers - Could You Be Loved.mp3")
-
+  # Step 2: Recognize the song from each compressed audio file
+  recongizeSongFromCompressedAudioFiles(song)
 
 
 # FIRST 3s and MID 3s
 # Step 1: Get the first 3s and middle 3s of the audio file
-# getFirstAndMiddle3s("Bob Marley & The Wailers - Could You Be Loved.mp3")
+  getFirstAndMiddle3s(song)
 
 # Step 2: Recognize the song from the first 3s and middle 3s
-# recognizeSongFromFirstAndMiddle3s("Bob Marley & The Wailers - Could You Be Loved.mp3")
+  recognizeSongFromFirstAndMiddle3s(song)
+
